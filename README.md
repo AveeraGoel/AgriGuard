@@ -1,34 +1,61 @@
-# 🌾 AgriGuard – Satellite Crop Health Monitoring
+# 🌾 AgriGuard
 
-Domain 3: Agricultural Sustainability · Problem 3.1 Crop Health Monitoring System
+## Satellite-Based Crop Health Monitoring System
 
-AgriGuard is a Google Earth Engine app that uses Sentinel-2 imagery to compute **NDVI, NDMI and NDRE**, compares current crop condition with each field's **own historical baseline**, and produces a **Healthy / Moderate / Stressed** crop map.
+**GeoImpathon 1.0 — Domain 3: Agricultural Sustainability**  
+**Problem Statement 3.1 — Crop Health Monitoring System**
 
-## Features
-- Cloud, shadow and snow masking (Sentinel-2 SCL)
-- Cropland-only analysis (ESA WorldCover)
-- NDVI, NDMI, NDRE layers
-- Temporal comparison: current vs 3-year same-season baseline
-- Health classes, % area statistics, 12-month NDVI trend
-- Click-to-inspect any field, plus automatic recommendation
+AgriGuard is a Google Earth Engine application that uses Sentinel-2 satellite imagery to monitor agricultural crop health, detect temporal changes, and identify potentially stressed agricultural areas.
 
-## Run / Deploy
-1. Sign in at https://code.earthengine.google.com (GEE account required).
-2. Create a new script, paste `app/agriguard.js`, click **Run**.
-3. Click **Apps** (top right of the Code Editor) → **New App** → name it `agriguard`, choose *Publish new app*, set access to **Anyone**, publish.
-4. Copy the generated `https://<project>.projects.earthengine.app/view/agriguard` URL – that's your live link.
+---
 
-## Usage
-Set an end date → click the map to choose a study area → toggle layers (NDVI, NDMI, NDRE, change) → switch mode to *Inspect point* and click a red field to see its values.
+## 🚀 Live Demo
 
-## Method
-See [docs/architecture.md](docs/architecture.md). Thresholds are tunable in the `CFG` block.
+**Live Application:**  
+https://aveeragoel0308.users.earthengine.app/view/agriguard
 
-## Limitations
-Fallow land can appear stressed; clouds during monsoon reduce valid observations; thresholds should be calibrated per crop and region with ground truth.
+---
 
-## Data
-Sentinel-2 SR Harmonized (ESA/Copernicus), ESA WorldCover v200 (2021).
+## 🎯 Problem
 
-## License
-MIT
+Large agricultural areas are difficult to monitor through manual field inspection alone. Crop stress may result from water shortage, nutrient deficiency, pests, disease, or environmental conditions.
+
+AgriGuard uses satellite-based vegetation indicators to identify areas that may require further field inspection.
+
+---
+
+## 💡 Our Solution
+
+AgriGuard processes Sentinel-2 imagery to:
+
+- Calculate NDVI, NDMI and NDRE
+- Mask clouds, shadows, cirrus and snow
+- Identify cropland using ESA WorldCover
+- Compare current crop condition with a historical baseline
+- Classify areas as Healthy, Moderate or Stressed
+- Identify potential stress hotspots
+- Display 12-month vegetation trends
+- Allow field-level inspection
+
+---
+
+## 🛰️ Data Sources
+
+### Sentinel-2 Surface Reflectance Harmonized
+
+Used for multispectral vegetation analysis.
+
+### ESA WorldCover
+
+Used to identify cropland areas.
+
+---
+
+## 📊 Vegetation Indices
+
+### NDVI
+
+Measures vegetation greenness.
+
+```text
+NDVI = (NIR - Red) / (NIR + Red)
